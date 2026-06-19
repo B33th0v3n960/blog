@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "./reset.css";
+
+:root {
+  --body-font: "Montserrat", sans-serif;
+  --h1-font-size: 3rem;
+  --h2-font-size: 2.25rem;
+  --h3-font-size: 1.5rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.8rem;
+  --smaller-font-size: 0.4rem;
+
+  --fg-primary: #1a1a1a;
+  --fg-secondary: #555555;
+  --bg-base: #ffffff;
+  --bg-surface: #f7f7f5;
+
+  --error-color: #de293e;
+  --warning-color: #ed9f2c;
+  --success-color: #49af3d;
+
+  font-size: 16px;
+  color: var(--fg-primary);
+  background-color: var(--bg-base);
+}
+
+html.dark {
+  --fg-primary: #ffffff;
+  --fg-secondary: #f7f7f5;
+  --bg-base: #1a1a1a;
+  --bg-surface: #555555;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--body-font);
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+}
+
+p,
+h4 {
+  font-size: var(--normal-font-size);
+}
+
+h5 {
+  font-size: var(--small-font-size);
+}
+
+h6 {
+  font-size: var(--smaller-font-size);
+}
