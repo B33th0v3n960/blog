@@ -1,0 +1,48 @@
+---
+import "../styles/footer.css";
+import { GitPullRequest, CircleUserRound, Mail } from "@lucide/astro";
+import { Image } from "astro:assets";
+---
+
+<footer>
+    <div class="footer__links">
+        <GitPullRequest />
+        <CircleUserRound />
+        <Mail />
+    </div>
+
+    <div class="footer__copyright">
+        This work is licensed under
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+            CC BY-SA 4.0
+        </a>
+        <div>
+            <Image
+                src="https://mirrors.creativecommons.org/presskit/icons/cc.svg"
+                alt="Creative Commons"
+                width="20"
+                height="20"
+                decoding="async"
+                loading="eager"
+            />
+
+            <Image
+                src="https://mirrors.creativecommons.org/presskit/icons/by.svg"
+                alt="Creative Commons"
+                width="20"
+                height="20"
+                decoding="async"
+                loading="eager"
+            />
+
+            <Image
+                src="https://mirrors.creativecommons.org/presskit/icons/sa.svg"
+                alt="Creative Commons"
+                width="20"
+                height="20"
+                decoding="async"
+                loading="eager"
+            />
+        </div>
+    </div>
+</footer>
