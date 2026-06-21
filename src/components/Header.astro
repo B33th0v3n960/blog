@@ -5,27 +5,29 @@ import { Menu, X } from "@lucide/astro";
 ---
 
 <header>
-    <span>
-        <a href="/" class="header__logo">
-            <h1>Zhou Sun</h1>
-        </a>
-        <button
-            aria-expanded="false"
-            aria-controls="header__navbar"
-            class="header__menu"
-        >
-            <Menu id="icon__menu" />
-            <X id="icon__close" />
-        </button>
-    </span>
+  <div class="header__inner">
+    <div>
+      <a href="/" class="header__logo">
+        <h1>Zhou Sun</h1>
+      </a>
+      <button
+        aria-expanded="false"
+        aria-controls="header__navbar"
+        class="header__menu"
+      >
+        <Menu id="icon__menu" />
+        <X id="icon__close" />
+      </button>
+    </div>
 
     <nav id="header__navbar" class="header__nav">
-        <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
-        <a href="/projects/">Projects</a>
+      <a href="/">Home</a>
+      <a href="/blog/">Blog</a>
+      <a href="/projects/">Projects</a>
     </nav>
+  </div>
 </header>
 
 <script>
-    import "../scripts/menu.js";
+  import "../scripts/menu.js";
 </script>

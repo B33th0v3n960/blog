@@ -27,6 +27,9 @@
   --space-md: 1rem;
   --space-lg: 2rem;
   --space-xl: 4rem;
+
+  --medium-breakpoint: 768px;
+  --large-breakpoint: 1280px;
 }
 
 html.dark {
