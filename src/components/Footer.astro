@@ -5,44 +5,57 @@ import { Image } from "astro:assets";
 ---
 
 <footer>
+  <div class="footer__inner">
     <div class="footer__links">
+      <a href="https://github.com/B33th0v3n960" target="_blank">
         <GitPullRequest />
+        <p>Github</p>
+      </a>
+
+      <a href="https://www.linkedin.com/in/zhou-sun-8069281a7/" target="_blank">
         <CircleUserRound />
+        <p>LinkedIn</p>
+      </a>
+
+      <a href="mailto:zhou@zhousun.cc" target="_blank">
         <Mail />
+        <p>Email</p>
+      </a>
     </div>
 
     <div class="footer__copyright">
-        This work is licensed under
-        <a href="https://creativecommons.org/licenses/by-sa/4.0/">
-            CC BY-SA 4.0
-        </a>
-        <div>
-            <Image
-                src="https://mirrors.creativecommons.org/presskit/icons/cc.svg"
-                alt="Creative Commons"
-                width="20"
-                height="20"
-                decoding="async"
-                loading="eager"
-            />
+      This work is licensed under
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+        CC BY-SA 4.0
+      </a>
+      <div>
+        <Image
+          src="https://mirrors.creativecommons.org/presskit/icons/cc.svg"
+          alt="Creative Commons"
+          width="20"
+          height="20"
+          decoding="async"
+          loading="eager"
+        />
 
-            <Image
-                src="https://mirrors.creativecommons.org/presskit/icons/by.svg"
-                alt="Creative Commons"
-                width="20"
-                height="20"
-                decoding="async"
-                loading="eager"
-            />
+        <Image
+          src="https://mirrors.creativecommons.org/presskit/icons/by.svg"
+          alt="Creative Commons"
+          width="20"
+          height="20"
+          decoding="async"
+          loading="eager"
+        />
 
-            <Image
-                src="https://mirrors.creativecommons.org/presskit/icons/sa.svg"
-                alt="Creative Commons"
-                width="20"
-                height="20"
-                decoding="async"
-                loading="eager"
-            />
-        </div>
+        <Image
+          src="https://mirrors.creativecommons.org/presskit/icons/sa.svg"
+          alt="Creative Commons"
+          width="20"
+          height="20"
+          decoding="async"
+          loading="eager"
+        />
+      </div>
     </div>
+  </div>
 </footer>
