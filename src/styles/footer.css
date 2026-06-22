@@ -6,6 +6,7 @@ footer {
 
   a {
     text-decoration: underline;
+    stroke: var(--fg-primary);
   }
 }
 
@@ -35,6 +36,10 @@ footer {
     display: flex;
     justify-content: center;
     gap: var(--space-xs);
+  }
+
+  a {
+    white-space: nowrap;
   }
 }
 
