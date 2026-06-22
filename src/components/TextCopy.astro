@@ -1,0 +1,53 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  displayText: string;
+  copyText: string;
+  id: string;
+}
+
+const { displayText, copyText, id } = Astro.props;
+---
+
+<div class="copy__container">
+  <span class="copy__text">{displayText}</span>
+  <button class="copy__button" id={id} data-copy-text={copyText}>Copy</button>
+</div>
+
+<style>
+  .copy__container {
+    display: flex;
+    align-items: center;
+    border: var(--default-border);
+    width: fit-content;
+    box-shadow: 0px 0px 0 0 var(--fg-primary);
+    transition: box-shadow 0.25s ease;
+  }
+
+  .copy__container:hover {
+    box-shadow: 5px 5px 0 0 var(--fg-primary);
+  }
+
+  .copy__text {
+    padding: var(--space-sm);
+  }
+
+  .copy__button {
+    border: none;
+    background-color: var(--fg-primary);
+    color: var(--bg-base);
+    padding: var(--space-sm);
+  }
+</style>
+
+<script is:inline define:vars={{ copyText, id }}>
+  document.querySelectorAll(".copy__button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const copyText = btn.dataset.copyText;
+      navigator.clipboard.writeText(copyText);
+      btn.innerHTML = "Copied";
+      setTimeout(() => (btn.innerHTML = "Copy"), 2000);
+    });
+  });
+</script>
