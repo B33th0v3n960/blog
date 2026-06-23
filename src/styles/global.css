@@ -60,3 +60,42 @@ textarea,
 select {
   color: var(--fg-primary);
 }
+
+button {
+  border: var(--default-border);
+  background-color: var(--bg-base);
+  padding: var(--space-xs) var(--space-md);
+  box-shadow: var(--no-shadow);
+  transition: box-shadow 0.25s ease;
+}
+
+button:hover {
+  box-shadow: var(--default-shadow);
+}
+
+.link__button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  border: var(--default-border);
+  padding: var(--space-xs) var(--space-md);
+  width: fit-content;
+  position: relative;
+}
+
+.link__button:before {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: calc(var(--space-md) - 2px);
+  width: calc(100% - 2 * var(--space-md) + 4px);
+  height: 2px;
+  background-color: var(--fg-primary);
+  transform: scaleX(0);
+  transform-origin: 0;
+  transition: transform 0.5s ease;
+}
+
+.link__button:hover:before {
+  transform: scaleX(1);
+}
