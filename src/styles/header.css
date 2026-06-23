@@ -21,6 +21,11 @@ header {
   border: none;
   background: none;
   margin-right: var(--space-xs);
+  box-shadow: none;
+
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 .header__menu[aria-expanded="false"] {
