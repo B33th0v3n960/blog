@@ -21,12 +21,12 @@ const { displayText, copyText, id } = Astro.props;
     align-items: center;
     border: var(--default-border);
     width: fit-content;
-    box-shadow: 0px 0px 0 0 var(--fg-primary);
+    box-shadow: var(--no-shadow);
     transition: box-shadow 0.25s ease;
   }
 
   .copy__container:hover {
-    box-shadow: 5px 5px 0 0 var(--fg-primary);
+    box-shadow: var(--default-shadow);
   }
 
   .copy__text {
