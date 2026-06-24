@@ -14,13 +14,13 @@ header {
 }
 
 .header__logo {
-  margin-left: var(--space-xs);
+  margin-left: var(--space-md);
 }
 
 .header__menu {
   border: none;
   background: none;
-  margin-right: var(--space-xs);
+  margin-right: var(--space-md);
   box-shadow: none;
 
   &:hover {
@@ -82,7 +82,7 @@ header {
     max-width: var(--large-breakpoint);
     display: flex;
     justify-content: space-between;
-    margin: 0 var(--space-sm);
+    margin: 0 var(--space-md);
     border: none;
 
     div {
