@@ -1,0 +1,49 @@
+.markdown {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 1.25em;
+    margin-bottom: 0.25em;
+    border-bottom: var(--divider-border);
+  }
+
+  p {
+    margin-bottom: 0.25em;
+  }
+
+  pre.astro-code {
+    padding: var(--space-md);
+    border: var(--default-border);
+    overflow-x: auto;
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  :not(pre) > code {
+    background-color: var(--bg-surface);
+    border: var(--divider-border);
+    padding: 0.05rem;
+    white-space: nowrap;
+  }
+
+  hr {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    border: var(--divider-border);
+  }
+
+  table {
+    table-layout: fix;
+    width: fit-content;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border: var(--default-border);
+    padding: var(--space-xs) var(--space-md);
+  }
+}

@@ -1,0 +1,11 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import "../styles/markdown.css";
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+  <div class="markdown">
+    <slot />
+  </div>
+</BaseLayout>

@@ -20,6 +20,7 @@
   --success-color: #689d6a;
 
   --default-border: 2px solid var(--fg-primary);
+  --divider-border: 1px dashed var(--fg-secondary);
 
   --base-spacing: 0.25rem;
   --space-xs: 0.25rem;
@@ -39,4 +40,10 @@ html.dark {
   --fg-secondary: #f8f6ec;
   --bg-base: #282828;
   --bg-surface: #3c3836;
+}
+
+html.dark .astro-code,
+html.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
 }
