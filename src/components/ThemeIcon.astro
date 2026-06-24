@@ -1,6 +1,5 @@
 ---
-import Moon from "../assets/moon.svg";
-import Sun from "../assets/sun.svg";
+import { Sun, Moon } from "@lucide/astro";
 ---
 
 <button id="themeToggle" aria-label="Toggle theme">
@@ -11,9 +10,9 @@ import Sun from "../assets/sun.svg";
 <style>
   #themeToggle {
     border: 0;
-    background: none;
-    overflow: hidden;
-    position: relative;
+    padding: 0;
+    display: flex;
+    place-items: center;
 
     &:hover {
       box-shadow: none;
@@ -21,7 +20,7 @@ import Sun from "../assets/sun.svg";
   }
   .sun,
   .moon {
-    fill: var(--fg-primary);
+    background-color: var(--bg-surface);
   }
   .sun {
     display: inline;
@@ -35,6 +34,13 @@ import Sun from "../assets/sun.svg";
   }
   :global(.dark) .moon {
     display: inline;
+  }
+
+  @media screen and (min-width: 768px) {
+    .sun,
+    .moon {
+      background-color: transparent;
+    }
   }
 </style>
 
