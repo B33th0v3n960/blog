@@ -73,6 +73,7 @@ button {
 
 button:hover {
   box-shadow: var(--default-shadow);
+  cursor: pointer;
 }
 
 .link {
