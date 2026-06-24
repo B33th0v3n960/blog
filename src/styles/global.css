@@ -19,7 +19,6 @@ body {
 main {
   flex: 1;
   display: flex;
-  gap: var(--space-lg);
   flex-direction: column;
   max-width: var(--large-breakpoint);
   width: calc(100% - 2 * var(--space-md));
@@ -54,6 +53,11 @@ h5 {
 
 h6 {
   font-size: var(--smaller-font-size);
+}
+
+ol,
+ul {
+  padding-left: 1.5rem;
 }
 
 input,
