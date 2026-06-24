@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css";
+import { Copy, Check } from "@lucide/astro";
+
+const iconSize = 16;
 
 interface Props {
   displayText: string;
@@ -12,7 +15,10 @@ const { displayText, copyText, id } = Astro.props;
 
 <div class="copy__container">
   <span class="copy__text">{displayText}</span>
-  <button class="copy__button" id={id} data-copy-text={copyText}>Copy</button>
+  <button class="copy__button" id={id} data-copy-text={copyText}>
+    <Copy class="copy" size={iconSize} />
+    <Check class="check" size={iconSize} />
+  </button>
 </div>
 
 <style>
@@ -20,7 +26,6 @@ const { displayText, copyText, id } = Astro.props;
     display: flex;
     align-items: center;
     border: var(--default-border);
-    width: fit-content;
     box-shadow: var(--no-shadow);
     transition: box-shadow 0.25s ease;
   }
@@ -30,7 +35,8 @@ const { displayText, copyText, id } = Astro.props;
   }
 
   .copy__text {
-    padding: var(--space-sm);
+    flex: 1;
+    padding: var(--space-xs) var(--space-md);
   }
 
   .copy__button {
@@ -38,6 +44,25 @@ const { displayText, copyText, id } = Astro.props;
     background-color: var(--fg-primary);
     color: var(--bg-base);
     padding: var(--space-sm);
+    align-self: stretch;
+
+    .copy {
+      display: block;
+    }
+
+    .check {
+      display: none;
+    }
+
+    &.copied {
+      .copy {
+        display: none;
+      }
+
+      .check {
+        display: block;
+      }
+    }
   }
 </style>
 
@@ -46,8 +71,8 @@ const { displayText, copyText, id } = Astro.props;
     btn.addEventListener("click", () => {
       const copyText = btn.dataset.copyText;
       navigator.clipboard.writeText(copyText);
-      btn.innerHTML = "Copied";
-      setTimeout(() => (btn.innerHTML = "Copy"), 2000);
+      btn.classList.add("copied");
+      setTimeout(() => btn.classList.remove("copied"), 2000);
     });
   });
 </script>
