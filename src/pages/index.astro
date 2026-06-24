@@ -1,21 +1,99 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CopyText from "../components/TextCopy.astro";
+
+import { ArrowUpRight, Download } from "@lucide/astro";
+import { Image } from "astro:assets";
+
+const iconSize = 16;
 const pageTitle = "Portfolio | Home";
+const email = "zhou@zhousun.cc";
+const linkedInUrl = "https://www.linkedin.com/in/zhou-sun-8069281a7";
+const githubUrl = "https://github.com/B33th0v3n960";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1>Home Page</h1>
-  <p>
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, eligendi
-    commodi, similique sunt numquam expedita illum nobis quasi inventore ipsum
-    repellat saepe minima veniam facilis soluta assumenda tenetur sequi.
-    Perspiciatis corrupti ipsum eius porro ipsam iste enim quis ex, modi
-    adipisci ipsa, tenetur esse odio. Debitis rerum praesentium repellat, ex ut
-    quod aspernatur accusantium sit laboriosam quos eum voluptates cupiditate
-    autem vitae quam voluptatum molestiae sapiente quas asperiores? Porro
-    exercitationem quidem animi eligendi officia corrupti nam, aliquam accusamus
-    fugiat earum aliquid impedit saepe maxime magnam consequuntur placeat
-    facilis qui autem facere ipsum neque assumenda laudantium commodi atque.
-    Ipsam, accusamus amet! Lorem
-  </p>
+  <section class="intro">
+    <h1>Computer Science Student</h1>
+    <p>
+      Full-stack developer in training at Trinity College Dublin. I work across
+      Java, JavaScript, and React, and I'm actively looking for internships to
+      take my skills into a real-world environment. Here's what I've been
+      building.
+    </p>
+  </section>
+  <section class="about">
+    <div class="cv">
+      <h2>Curriculum Vitae</h2>
+      <p>Feel free to grab my CV below.</p>
+      <button class="download">
+        Download<Download size={iconSize} />
+      </button>
+    </div>
+    <div class="contact">
+      <h2>Contacts</h2>
+
+      <CopyText id="email" copyText={email} displayText="zhou[@]zhousun.cc" />
+
+      <div class="link__button">
+        <span>LinkedIn:</span>
+        <a href={linkedInUrl} class="link">
+          {linkedInUrl.slice(12, 36)}
+          <ArrowUpRight size={iconSize} />
+        </a>
+      </div>
+
+      <div class="link__button">
+        <span>Github:</span>
+        <a href={githubUrl} class="link">
+          {githubUrl.slice(8, 31)}<ArrowUpRight size={iconSize} />
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="projects">
+    <h2>Projects</h2>
+  </section>
 </BaseLayout>
+
+<style>
+  .link__button {
+    border: var(--default-border);
+    padding: var(--space-xs) var(--space-md);
+    display: flex;
+    place-items: center;
+    gap: var(--space-sm);
+  }
+
+  .download {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .intro {
+    max-width: var(--medium-breakpoint);
+  }
+
+  .about {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .cv button {
+    margin-top: var(--space-sm);
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    width: fit-content;
+  }
+
+  @media screen and (min-width: 768px) {
+    .about {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

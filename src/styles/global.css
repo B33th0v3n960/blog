@@ -18,10 +18,12 @@ body {
 
 main {
   flex: 1;
-  display: block;
+  display: flex;
+  gap: var(--space-lg);
+  flex-direction: column;
   max-width: var(--large-breakpoint);
-  width: calc(100% - 2 * var(--space-sm));
-  margin: 0 var(--space-sm);
+  width: calc(100% - 2 * var(--space-md));
+  margin: 0 var(--space-md);
 }
 
 a {
@@ -73,29 +75,26 @@ button:hover {
   box-shadow: var(--default-shadow);
 }
 
-.link__button {
+.link {
+  width: fit-content;
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
-  border: var(--default-border);
-  padding: var(--space-xs) var(--space-md);
-  width: fit-content;
   position: relative;
-}
 
-.link__button:before {
-  content: "";
-  position: absolute;
-  bottom: 4px;
-  left: calc(var(--space-md) - 2px);
-  width: calc(100% - 2 * var(--space-md) + 4px);
-  height: 2px;
-  background-color: var(--fg-primary);
-  transform: scaleX(0);
-  transform-origin: 0;
-  transition: transform 0.5s ease;
-}
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--fg-primary);
+    transform: scaleX(0);
+    transform-origin: 0;
+    transition: transform 0.5s ease;
+  }
 
-.link__button:hover:before {
-  transform: scaleX(1);
+  &:hover:before {
+    transform: scaleX(1);
+  }
 }
