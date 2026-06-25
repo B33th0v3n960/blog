@@ -1,3 +1,16 @@
+:where([data-astro-image]) {
+  object-fit: cover;
+  /* object-position: var(--pos); */
+  border: var(--default-border);
+}
+
+:where([data-astro-image="full-width"]) {
+  width: 100%;
+}
+:where([data-astro-image="constrained"]) {
+  max-width: 100%;
+}
+
 .markdown {
   h1,
   h2,

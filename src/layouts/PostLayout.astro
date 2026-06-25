@@ -1,10 +1,28 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import "../styles/markdown.css";
+
+import { Image } from "astro:assets";
+
 const { frontmatter } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/**/*.{png,jpg,jpeg,webp,avif}",
+);
+const imageLoader = images[frontmatter.image.url];
+if (!imageLoader) throw new Error(`Image not found: ${frontmatter.image.url}`);
+const resolvedImage = (await imageLoader()).default;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
+  <Image
+    src={resolvedImage}
+    alt={frontmatter.image.alt}
+    width={600}
+    height={400}
+    decoding="async"
+    loading="eager"
+  />
   <div class="markdown">
     <slot />
   </div>
