@@ -12,18 +12,77 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 const imageLoader = images[frontmatter.image.url];
 if (!imageLoader) throw new Error(`Image not found: ${frontmatter.image.url}`);
 const resolvedImage = (await imageLoader()).default;
+
+const options = {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+const pubDate = frontmatter.pubDate.toLocaleDateString("en-UK", options);
+const editDate = frontmatter.editDate.toLocaleDateString("en-UK", options);
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-  <Image
-    src={resolvedImage}
-    alt={frontmatter.image.alt}
-    width={600}
-    height={400}
-    decoding="async"
-    loading="eager"
-  />
+  <h1>{frontmatter.title}</h1>
+  <p class="date">Published: {pubDate} | Last edited: {editDate}</p>
+  <p class="brief">{frontmatter.description}</p>
+  <div class="cover-image">
+    <Image
+      src={resolvedImage}
+      alt={frontmatter.image.alt}
+      width={1280}
+      layout="full"
+      decoding="async"
+      loading="eager"
+    />
+  </div>
   <div class="markdown">
     <slot />
   </div>
 </BaseLayout>
+
+<style>
+  h1 {
+    margin-top: var(--space-md);
+    font-size: var(--xl-font-size);
+    /* margin-bottom: var(--space-sm); */
+  }
+
+  .date {
+    font-size: var(--small-font-size);
+    color: var(--fg-mute);
+    font-weight: bold;
+  }
+
+  .brief {
+    margin-top: var(--space-md);
+  }
+
+  .cover-image {
+    max-height: 200px;
+    overflow: hidden;
+    margin-top: var(--space-md);
+    display: flex;
+    justify-content: center;
+    border: var(--default-border);
+
+    :where([data-image-component]) {
+      object-fit: cover;
+    }
+
+    :where([data-astro-image="full"]) {
+      width: 100%;
+      height: 100%;
+    }
+    :where([data-astro-image="constrained"]) {
+      max-width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 512px) {
+    .cover-image {
+      max-width: 90%;
+      max-height: 400px;
+    }
+  }
+</style>
