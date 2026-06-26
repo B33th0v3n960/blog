@@ -1,7 +1,7 @@
 ---
-title: "My First Blog Post"
+title: "How AI Is Rewriting the SecOps Playbook"
 pubDate: 2022-07-01
-editDate: 2022-07-03
+editDate: 2022-07-05
 description: |
     The threat landscape has changed. Adversaries operate at machine speed, shrinking
     attacks from days to minutes. Defenders can no longer investigate and respond 
@@ -9,8 +9,8 @@ description: |
     automation, and continuous decision-making.
 author: "Astro Learner"
 image:
-  url: "/src/assets/dashboard.png"
-  alt: "The Astro logo on a dark background with a pink glow."
+  url: "/src/assets/windows.png"
+  alt: "Test image from wiz."
 tags: ["astro", "blogging", "learning in public"]
 ---
 
@@ -87,8 +87,6 @@ Use asterisks or underscores:
 ```markdown
 ![Alt Text](https://via.placeholder.com/150)
 ```
-![windows wallpaper](../../assets/windows.png)
-![dashboard](../../assets/dashboard.png)
 
 ## 6. Code
 
