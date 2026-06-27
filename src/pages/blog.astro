@@ -1,8 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogCard from "../components/BlogCard.astro";
 
-const pageTitle = "My Astro Learning Blog";
+const pageTitle = "Portfolio | Blog";
 const allPosts = await getCollection("blog");
 ---
 
@@ -11,8 +12,25 @@ const allPosts = await getCollection("blog");
   <ul>
     {
       allPosts.map((post) => (
-        <a href={`/posts/${post.id}/`}>{post.data.title}</a>
+        <BlogCard data={post.data} link={`/posts/${post.id}/`} />
       ))
     }
   </ul>
 </BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: var(--space-lg);
+  }
+  ul {
+    padding: 0;
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  @media screen and (min-width: 768px) {
+    ul {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

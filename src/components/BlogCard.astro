@@ -1,0 +1,80 @@
+---
+import "../styles/global.css";
+import { Image } from "astro:assets";
+
+const { data, link } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/**/*.{png,jpg,jpeg,webp,avif}",
+);
+const imageLoader = images[data.image.url];
+if (!imageLoader) throw new Error(`Image not found: ${data.image.url}`);
+const resolvedImage = (await imageLoader()).default;
+---
+
+<div class="blogcard">
+  <h2 class="blogcard__title">{data.title}</h2>
+
+  <Image
+    src={resolvedImage}
+    alt={data.image.alt}
+    class="blogcard__image"
+    width={480}
+    decoding="async"
+    loading="eager"
+  />
+
+  <ul class="blogcard__tags">
+    {data.tags.map((tag: string) => <a>#{tag}</a>)}
+  </ul>
+
+  <p class="blogcard__description">{data.description}</p>
+
+  <div class="link__button">
+    <a class="link" href={link}>Read more...</a>
+  </div>
+</div>
+
+<style>
+  .blogcard {
+    border: var(--default-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+
+    box-shadow: var(--no-shadow);
+    transition: box-shadow 0.25s ease;
+  }
+
+  .blogcard:hover {
+    box-shadow: var(--default-shadow);
+  }
+
+  .blogcard__title,
+  .blogcard__description {
+    text-align: center;
+  }
+
+  .blogcard__tags {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    gap: var(--space-xs);
+
+    a {
+      border: var(--divider-border);
+      background-color: var(--bg-surface);
+      padding: var(--space-xs);
+    }
+  }
+
+  .blogcard__image {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    border: var(--default-border);
+  }
+</style>
