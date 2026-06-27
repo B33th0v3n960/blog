@@ -105,3 +105,11 @@ button:hover {
     transform: scaleX(1);
   }
 }
+
+.link__button {
+  border: var(--default-border);
+  padding: var(--space-xs) var(--space-md);
+  display: flex;
+  place-items: center;
+  gap: var(--space-sm);
+}
