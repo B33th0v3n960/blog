@@ -32,7 +32,7 @@ const editDate = frontmatter.editDate.toLocaleDateString("en-UK", options);
       src={resolvedImage}
       alt={frontmatter.image.alt}
       width={1280}
-      layout="full"
+      layout="full-width"
       decoding="async"
       loading="eager"
     />
@@ -71,7 +71,7 @@ const editDate = frontmatter.editDate.toLocaleDateString("en-UK", options);
       object-fit: cover;
     }
 
-    :where([data-astro-image="full"]) {
+    :where([data-astro-image="full-width"]) {
       width: 100%;
       height: 100%;
     }
