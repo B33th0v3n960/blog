@@ -7,7 +7,6 @@ description: |
     attacks from days to minutes. Defenders can no longer investigate and respond 
     before damage occurs. In this new era, Security Operations must prioritize speed,
     automation, and continuous decision-making.
-author: "Astro Learner"
 image:
   url: "/src/assets/windows.png"
   alt: "Test image from wiz."

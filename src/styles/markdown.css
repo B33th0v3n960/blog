@@ -20,10 +20,9 @@
     font-weight: 600;
   }
 
-  blockquote {
-    background-color: var(--bg-surface);
-    border-left: 5px solid var(--fg-mute);
-    padding: 0.5em 10px;
+  .contains-task-list {
+    list-style: none;
+    padding-left: 0.5rem;
   }
 
   pre.astro-code {
@@ -63,6 +62,69 @@
     border: var(--default-border);
     height: auto;
     margin: var(--space-md) auto;
+  }
+
+  blockquote {
+    background-color: var(--bg-surface);
+    border: var(--default-border);
+    border-color: var(--fg-mute);
+    border-left: 5px solid var(--fg-mute);
+    padding: 0.5em 10px;
+    margin: var(--space-md) 0;
+  }
+
+  .markdown-alert {
+    --color-border-default: var(--fg-primary);
+    --color-accent-fg: var(--fg-mute);
+    --color-accent-emphasis: var(--fg-mute);
+    --color-danger-fg: var(--error-color);
+    --color-danger-emphasis: var(--error-color);
+    --color-attention-fg: var(--warning-color);
+    --color-attention-emphasis: var(--warning-color);
+    --color-done-fg: var(--warning-color);
+    --color-done-emphasis: var(--warning-color);
+    --color-success-fg: var(--success-color);
+    --color-success-emphasis: var(--success-color);
+  }
+
+  .markdown-alert-note {
+    background-color: hsl(from var(--color-accent-fg) h s l / 0.1);
+    border: var(--default-border);
+    border-color: var(--color-accent-fg);
+    border-left: 5px solid var(--color-accent-fg);
+    margin: var(--space-md) 0;
+  }
+
+  .markdown-alert-tip {
+    background-color: hsl(from var(--color-success-fg) h s l / 0.1);
+    border: var(--default-border);
+    border-color: var(--color-success-fg);
+    border-left: 5px solid var(--color-success-fg);
+    margin: var(--space-md) 0;
+  }
+
+  .markdown-alert-important {
+    background-color: hsl(from var(--color-attention-fg) h s l / 0.1);
+    border: var(--default-border);
+    border-color: var(--color-attention-fg);
+    border-left: 5px solid var(--color-attention-fg);
+    margin: var(--space-md) 0;
+  }
+
+  .markdown-alert-warning {
+    background-color: hsl(from var(--color-done-fg) h s l / 0.1);
+    border: var(--default-border);
+    border-color: var(--color-attention-fg);
+    border-left: 5px solid var(--color-attention-fg);
+    margin: var(--space-md) 0;
+  }
+
+  .markdown-alert-caution {
+    background-color: hsl(from var(--color-danger-fg) h s l / 0.1);
+    border: var(--default-border);
+    border-color: var(--color-danger-fg);
+    border-left: 5px solid var(--color-danger-fg);
+    margin: var(--space-md) 0;
   }
 }
 
