@@ -5,7 +5,7 @@ header {
 
 .header__inner div {
   border-bottom: var(--default-border);
-  position: sticky;
+  position: relative;
   z-index: 1;
   width: 100%;
   background: var(--bg-base);
@@ -67,7 +67,7 @@ header {
 }
 
 :has(.header__menu[aria-expanded="true"]) + .header__nav {
-  top: 50px;
+  top: 40px;
 }
 
 @media screen and (min-width: 768px) {
