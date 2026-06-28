@@ -9,6 +9,10 @@ const allPosts = await getCollection("blog");
 const filteredPosts = allPosts.filter((post: any) =>
   post.data.tags?.includes("project"),
 );
+filteredPosts.sort(
+  (a, b) =>
+    new Date(b.data.editDate).getTime() - new Date(a.data.editDate).getTime(),
+);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
