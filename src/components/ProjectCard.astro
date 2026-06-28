@@ -1,0 +1,97 @@
+---
+import "../styles/global.css";
+import { Image } from "astro:assets";
+
+const { data, blogLink, repoLink } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/**/*.{png,jpg,jpeg,webp,avif}",
+);
+const imageLoader = images[data.image.url];
+if (!imageLoader) throw new Error(`Image not found: ${data.image.url}`);
+const resolvedImage = (await imageLoader()).default;
+---
+
+<div class="projcard">
+  <h2 class="projcard__title">{data.title}</h2>
+
+  <Image
+    src={resolvedImage}
+    alt={data.image.alt}
+    class="projcard__image"
+    width={480}
+    decoding="async"
+    loading="eager"
+  />
+
+  <ul class="projcard__tags">
+    {data.tags.map((tag: string) => <a href={`/tags/${tag}`}>#{tag}</a>)}
+  </ul>
+
+  <p class="projcard__description">{data.description}</p>
+
+  <div class="projcard__links">
+    <div class="link__button projcard__link">
+      <a class="link" href={repoLink}>Repo</a>
+    </div>
+
+    <div class="link__button projcard__link">
+      <a class="link" href={blogLink}>Read more...</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .projcard {
+    border: var(--default-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+
+    box-shadow: var(--no-shadow);
+    transition: box-shadow 0.25s ease;
+  }
+
+  .projcard:hover {
+    box-shadow: var(--default-shadow);
+  }
+
+  .projcard__title,
+  .projcard__description {
+    text-align: center;
+  }
+
+  .projcard__tags {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    gap: var(--space-xs);
+
+    a {
+      border: var(--divider-border);
+      background-color: var(--bg-surface);
+      padding: var(--space-xs);
+    }
+
+    a:hover {
+      background-color: var(--fg-secondary);
+      border: var(--divider-border-inverse);
+      color: var(--bg-base);
+    }
+  }
+
+  .projcard__image {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    border: var(--default-border);
+  }
+
+  .projcard__links {
+    margin-top: auto;
+    display: flex;
+    gap: var(--space-md);
+  }
+</style>

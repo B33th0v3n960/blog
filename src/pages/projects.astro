@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const pageTitle = "Portfolio | Blog";
+const allPosts = await getCollection("blog");
+
+const filteredPosts = allPosts.filter((post: any) =>
+  post.data.tags?.includes("project"),
+);
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1>Projects</h1>
+  <ul>
+    {
+      filteredPosts.map((post) => (
+        <ProjectCard
+          data={post.data}
+          blogLink={`/posts/${post.id}/`}
+          repoLink={post.data.links.repo}
+        />
+      ))
+    }
+  </ul>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: var(--space-lg);
+  }
+  ul {
+    padding: 0;
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  @media screen and (min-width: 768px) {
+    ul {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    ul {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+</style>

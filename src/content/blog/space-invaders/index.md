@@ -10,6 +10,8 @@ description: |
 image:
   url: "/src/assets/cover-images/space-invaders.png"
   alt: "Screenshot of dashboard"
+links:
+    repo: "https://github.com/B33th0v3n960/space-invaders"
 tags: ["project"]
 ---
 
