@@ -1,8 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CopyText from "../components/TextCopy.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 
+import { getCollection } from "astro:content";
 import { ArrowUpRight, Download } from "@lucide/astro";
+
+const allPosts = await getCollection("blog");
+const selectedSlugs = ["dashboard", "space-invaders"];
+const selectedPosts = allPosts.filter((post) =>
+  selectedSlugs.includes(post.id),
+);
+selectedPosts.sort(
+  (a, b) =>
+    new Date(b.data.editDate).getTime() - new Date(a.data.editDate).getTime(),
+);
 
 const iconSize = 16;
 const pageTitle = "Portfolio | Home";
@@ -32,30 +44,47 @@ const githubUrl = "https://github.com/B33th0v3n960";
     <div class="contact">
       <h2>Contacts</h2>
 
-      <CopyText id="email" copyText={email} displayText="zhou[@]zhousun.cc" />
+      <div class="contact__buttons">
+        <CopyText id="email" copyText={email} displayText="zhou[@]zhousun.cc" />
+        <div class="link__button">
+          <span>LinkedIn:</span>
+          <a href={linkedInUrl} class="link">
+            {linkedInUrl.slice(12, 36)}
+            <ArrowUpRight size={iconSize} />
+          </a>
+        </div>
 
-      <div class="link__button">
-        <span>LinkedIn:</span>
-        <a href={linkedInUrl} class="link">
-          {linkedInUrl.slice(12, 36)}
-          <ArrowUpRight size={iconSize} />
-        </a>
-      </div>
-
-      <div class="link__button">
-        <span>Github:</span>
-        <a href={githubUrl} class="link">
-          {githubUrl.slice(8, 31)}<ArrowUpRight size={iconSize} />
-        </a>
+        <div class="link__button">
+          <span>Github:</span>
+          <a href={githubUrl} class="link">
+            {githubUrl.slice(8, 31)}<ArrowUpRight size={iconSize} />
+          </a>
+        </div>
       </div>
     </div>
   </section>
   <section class="projects">
     <h2>Projects</h2>
+    <ul>
+      {
+        selectedPosts.map((post) => (
+          <ProjectCard
+            data={post.data}
+            blogLink={`/posts/${post.id}/`}
+            repoLink={post.data.links.repo}
+          />
+        ))
+      }
+    </ul>
   </section>
 </BaseLayout>
 
 <style>
+  h1,
+  h2 {
+    margin-bottom: var(--space-sm);
+  }
+
   section {
     margin-bottom: var(--space-lg);
   }
@@ -80,15 +109,34 @@ const githubUrl = "https://github.com/B33th0v3n960";
   }
 
   .contact {
+    width: fit-content;
+  }
+
+  .contact__buttons {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    width: fit-content;
+  }
+
+  ul {
+    padding: 0;
+    display: grid;
+    gap: var(--space-md);
   }
 
   @media screen and (min-width: 768px) {
     .about {
       grid-template-columns: 1fr 1fr;
+    }
+
+    ul {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    ul {
+      grid-template-columns: 1fr 1fr 1fr;
     }
   }
 </style>
