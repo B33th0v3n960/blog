@@ -25,12 +25,12 @@ const resolvedImage = (await imageLoader()).default;
   />
 
   <ul class="blogcard__tags">
-    {data.tags.map((tag: string) => <a>#{tag}</a>)}
+    {data.tags.map((tag: string) => <a href={`/tags/${tag}`}>#{tag}</a>)}
   </ul>
 
   <p class="blogcard__description">{data.description}</p>
 
-  <div class="link__button">
+  <div class="link__button blogcard__link">
     <a class="link" href={link}>Read more...</a>
   </div>
 </div>
@@ -40,7 +40,6 @@ const resolvedImage = (await imageLoader()).default;
     border: var(--default-border);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     gap: var(--space-sm);
     padding: var(--space-md);
@@ -69,6 +68,12 @@ const resolvedImage = (await imageLoader()).default;
       background-color: var(--bg-surface);
       padding: var(--space-xs);
     }
+
+    a:hover {
+      background-color: var(--fg-secondary);
+      border: var(--divider-border-inverse);
+      color: var(--bg-base);
+    }
   }
 
   .blogcard__image {
@@ -76,5 +81,9 @@ const resolvedImage = (await imageLoader()).default;
     max-width: 480px;
     height: auto;
     border: var(--default-border);
+  }
+
+  .blogcard__link {
+    margin-top: auto;
   }
 </style>
