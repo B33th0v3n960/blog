@@ -73,6 +73,14 @@
     margin: var(--space-md) 0;
   }
 
+  summary {
+    width: fit-content;
+  }
+
+  summary:hover {
+    cursor: pointer;
+  }
+
   .markdown-alert {
     --color-border-default: var(--fg-primary);
     --color-accent-fg: var(--fg-mute);
