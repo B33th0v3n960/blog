@@ -1,22 +1,148 @@
 ---
-title: "Advanced Markdown Features"
-pubDate: 2022-07-01
-editDate: 2022-07-05
+title: "Markdown Specs"
+pubDate: 2026-06-27
+editDate: 2026-06-27
 description: |
-    This document covers some of the more powerful features of Markdown, especially 
-    those supported by GitHub Flavored Markdown (GFM) and other modern renderers.
+    Markdown is a lightweight markup language used to format text. It is commonly
+    used for documentation, README files, and notes. Here's a quick overview of its
+    main features.
 image:
-  url: "/src/assets/windows.png"
-  alt: "Test image from wiz."
-tags: ["astro", "blogging", "learning in public"]
+  url: "/src/assets/cover-images/markdown.png"
+  alt: "Markdown logo"
+tags: ["notes", "documentation"]
+---
 ---
 
-# Advanced Markdown Features
+## 1. Headings
 
-This document covers some of the more powerful features of Markdown, especially 
-those supported by GitHub Flavored Markdown (GFM) and other modern renderers.
+Use `#` symbols for headings. The number of `#` signs determines the level.
 
-## 1. Task Lists
+```markdown
+# H1
+
+## H2
+
+### H3
+
+#### H4
+```
+
+# H1
+
+## H2
+
+### H3
+
+#### H4
+
+## 2. Emphasis
+
+Use asterisks or underscores:
+
+- _Italic_ → `*Italic*` or `_Italic_`
+- **Bold** → `**Bold**` or `__Bold__`
+- **_Bold and Italic_** → `***Bold and Italic***`
+
+## 3. Lists
+
+### Unordered List
+
+```markdown
+- Item 1
+- Item 2
+  - Subitem 2.1
+  - Subitem 2.2
+```
+
+- Item 1
+- Item 2
+
+  - Subitem 2.1
+  - Subitem 2.2
+
+### Ordered List
+
+```markdown
+1. First
+2. Second
+   1. Sub-step
+```
+
+1. First
+2. Second
+
+   1. Sub-step
+
+## 4. Links
+
+```markdown
+[example.com](https://www.example.com)
+```
+
+[example.com](https://www.example.com)
+
+## 5. Images
+
+```markdown
+![Alt Text](https://via.placeholder.com/150)
+```
+![Markdown Logo](./markdown.png)
+
+## 6. Code
+
+Inline code: `` `code` `` → Example: `print("Hello World")`
+
+Code blocks:
+
+<pre>
+```python
+def greet():
+    print("Hello, Markdown!")
+```
+</pre>
+
+```python
+def greet():
+    print("Hello, Markdown!")
+```
+
+## 7. Blockquotes
+
+```markdown
+> This is a blockquote.
+```
+
+> This is a blockquote.
+
+> You know you’re getting old when you get that one candle on the cake. It’s 
+> like, 'See if you can blow this out.'
+
+## 8. Horizontal Rule
+
+Three dashes, asterisks, or underscores:
+
+```markdown
+---
+```
+
+---
+
+## 9. Tables
+
+```markdown
+| Name  | Role      |
+| ----- | --------- |
+| Alice | Developer |
+| Bob   | Designer  |
+```
+
+| Name  | Role      |
+| ----- | --------- |
+| Alice | Developer |
+| Bob   | Designer  |
+
+
+## 10. Task Lists
 
 ````markdown
 ---
@@ -34,9 +160,8 @@ List of things I want to get done.
 * [ ] Learn advanced features
 * [ ] Conquer the world
 
----
 
-## 2. Footnotes
+## 11. Footnotes
 
 Add extra information without cluttering your main text.[^1]
 
@@ -48,9 +173,7 @@ This is a sentence with a footnote.[^1]
 
 [^1]: Here's the footnote!
 
----
-
-## 3. Tables with Alignment
+## 12. Tables with Alignment
 
 You can align text left, center, or right using colons (`:`).
 
@@ -68,9 +191,8 @@ You can align text left, center, or right using colons (`:`).
 | Bob     |   Designer  |    87 |
 | Charlie | **Manager** |   100 |
 
----
 
-## 4. Collapsible Sections (HTML only)
+## 13. Collapsible Sections (HTML only)
 
 ```html
 <details>
@@ -84,21 +206,8 @@ You can align text left, center, or right using colons (`:`).
   Hidden content goes here. You can include **Markdown** inside!
 </details>
 
----
 
-## 5. Emoji
-
-GitHub and some renderers support emoji codes:
-
-```markdown
-:+1: :smile: :tada:
-```
-
-👍 😄 🎉
-
----
-
-## 6. Strikethrough
+## 14. Strikethrough
 
 Use `~~text~~` to strike through.
 
@@ -108,9 +217,7 @@ Use `~~text~~` to strike through.
 
 ~~This text is crossed out~~
 
----
-
-## 7. Inline HTML
+## 15. Inline HTML
 
 Markdown allows some HTML:
 
@@ -120,9 +227,7 @@ Markdown allows some HTML:
 
 <b>Bold HTML</b> <i>Italic HTML</i> <span style="color:red">Red Text</span>
 
----
-
-## 8. Math (LaTeX, only in supported renderers)
+## 16. Math (LaTeX)
 
 Use dollar signs for inline math: `$E = mc^2$`
 Or double for blocks:
@@ -138,33 +243,19 @@ $$
 \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
 $$
 
-👉 *Note: You need a renderer like Jupyter Notebook, Typora, Obsidian, or MathJax/GitHub with math support for this to work properly.*
-
----
-
-## 9. Autolinks
+## 17. Autolinks
 
 URLs and emails become links automatically:
 
 ```markdown
-https://www.openai.com  
+https://www.example.com  
 email@example.com
 ```
 
-[https://www.openai.com](https://www.openai.com)
-[email@example.com](mailto:email@example.com)
+https://www.exmaple.com  
+email@example.com
 
----
-
-## 10. Mentions & References (GitHub only)
-
-```markdown
-@octocat referenced issue #42
-```
-
-> These features work on GitHub or similar platforms that support team mentions and issue linking.
-
-## 11. Alerts
+## 18. Alerts
 
 ```md
 > [!NOTE]
