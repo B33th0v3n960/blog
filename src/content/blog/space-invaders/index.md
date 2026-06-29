@@ -1,12 +1,12 @@
 ---
 title: "Space Invaders"
 pubDate: 2026-06-27
-editDate: 2026-06-27
+editDate: 2026-06-28
 description: |
-    A college assignment that I had too much fun building. It has some crazy 
-    unbeatable level. Behind this game, there exist advance maths such as linear
-    algebra (for separation axis theorem in collision detection) and trignometry
-    for the ellipse conveyer belt movement of the aliens.
+    Space Invaders built from scratch in Processing (Java), structured around an
+    object-oriented scene system with five playable levels. Collision detection 
+    is handled through a custom SAT implementation using linear algebra, while 
+    alien movement follows elliptical paths driven by trigonometry. 
 image:
   url: "/src/assets/cover-images/space-invaders.png"
   alt: "Screenshot of dashboard"

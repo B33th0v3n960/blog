@@ -3,11 +3,11 @@ title: "Courier Dashboard"
 pubDate: 2026-06-27
 editDate: 2026-06-27
 description: |
-    This was a website I built during my 2 week of work experience during 
-    Transition Year. It has responsive design, graphes and table rendered base 
-    on data (I wasn't given real data, thus the data are randomly generated). 
-    Sorting and toggle reverse sort are avaible on the table. Again this is an 
-    old project. Don't expect much 😅.
+    An analytics dashboard for a courier platform, built during a two-week 
+    Transition Year work experience at Matrix Internet. Tracks completed and 
+    in-progress jobs, company income and overall revenue, displayed through 
+    interactive graphs and filterable, sortable tables. Since no real data was 
+    provided, all figures are procedurally generated on the client side.
 image:
   url: "/src/assets/cover-images/dashboard.png"
   alt: "Screenshot of dashboard"
@@ -16,5 +16,6 @@ links:
 tags: ["project"]
 ---
 
-> [!NOTE]
-> 🚧 Still under construction
+## Demo
+A demo of the site is hosted at
+[dashboard.b33th0v3n.com](https://dashboard.b33th0v3n.com/)
