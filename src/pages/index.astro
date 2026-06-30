@@ -5,6 +5,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 
 import { getCollection } from "astro:content";
 import { ArrowUpRight, Download } from "@lucide/astro";
+import resume from "/Zhou-Sun_Resume.pdf";
 
 const allPosts = await getCollection("blog");
 const selectedSlugs = ["dashboard", "space-invaders"];
@@ -37,9 +38,9 @@ const githubUrl = "https://github.com/B33th0v3n960";
     <div class="cv">
       <h2>Curriculum Vitae</h2>
       <p>Feel free to grab my CV below.</p>
-      <button class="download">
+      <a href={resume} class="download">
         Download<Download size={iconSize} />
-      </button>
+      </a>
     </div>
     <div class="contact">
       <h2>Contacts</h2>
@@ -90,9 +91,22 @@ const githubUrl = "https://github.com/B33th0v3n960";
   }
 
   .download {
+    width: fit-content;
+    border: var(--default-border);
+    padding: var(--space-xs) var(--space-md);
+
     display: flex;
     align-items: center;
     gap: var(--space-sm);
+
+    background-color: var(--bg-base);
+    box-shadow: var(--no-shadow);
+    transition: box-shadow 0.25s ease;
+  }
+
+  .download:hover {
+    box-shadow: var(--default-shadow);
+    cursor: pointer;
   }
 
   .intro {
