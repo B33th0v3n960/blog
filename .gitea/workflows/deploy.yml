@@ -14,7 +14,8 @@ jobs:
       options: -v blog-data:/deploy/blog-data
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+      - run: npm ci
+      - run: npm run build
       - run: |
           rm -rf /deploy/blog-data/*
           cp -r dist/* /deploy/blog-data/
