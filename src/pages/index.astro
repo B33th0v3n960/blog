@@ -8,7 +8,7 @@ import { ArrowUpRight, Download } from "@lucide/astro";
 import resume from "/Zhou-Sun_Resume.pdf";
 
 const allPosts = await getCollection("blog");
-const selectedSlugs = ["dashboard", "space-invaders"];
+const selectedSlugs = ["flight-analyser", "cipher", "dashboard"];
 const selectedPosts = allPosts.filter((post) =>
   selectedSlugs.includes(post.id),
 );
