@@ -27,8 +27,9 @@ jobs:
       - name: Set release name
         run: echo "RELEASE=release-${GITHUB_REF#refs/tags/}" >> "$GITHUB_ENV"
 
-      - run: echo $RELEASE
       - run: |
-          rm -rf /deploy/blog-data/*
+          # rm -rf /deploy/blog-data/*
           mkdir -p /deploy/blog-data/$RELEASE
           rsync -az --delete dist/ /deploy/blog-data/$RELEASE
+          ln -sfn /deploy/blog-data/$RELEASE /deploy/blog-data/current
+          # cd /deploy/blog-data/ && ls -1t | tail -n +6 | xargs -r rm -rf
