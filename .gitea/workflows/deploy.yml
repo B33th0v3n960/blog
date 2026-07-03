@@ -31,5 +31,6 @@ jobs:
           # rm -rf /deploy/blog-data/*
           mkdir -p /deploy/blog-data/$RELEASE
           rsync -az --delete dist/ /deploy/blog-data/$RELEASE
-          ln -sfn /deploy/blog-data/$RELEASE /deploy/blog-data/current
-          # cd /deploy/blog-data/ && ls -1t | tail -n +6 | xargs -r rm -rf
+          cd /deploy/blog-data/ 
+          ln -sfn $RELEASE current
+          # ls -1t | tail -n +6 | xargs -r rm -rf
