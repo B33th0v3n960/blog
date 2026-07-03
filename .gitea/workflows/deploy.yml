@@ -15,8 +15,8 @@ jobs:
     steps:
       - name: Install system deps
         run: |
-          sudo apt-get update
-          sudo apt-get install -y rsync
+          apt-get update
+          apt-get install -y rsync
 
       - name: Check out repository code
         uses: actions/checkout@v4
