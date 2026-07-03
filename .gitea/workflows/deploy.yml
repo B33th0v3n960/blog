@@ -13,9 +13,18 @@ jobs:
       image: node:24-trixie-slim
       options: -v blog-data:/deploy/blog-data
     steps:
-      - uses: actions/checkout@v4
+      - name: Install system deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rsync
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
       - run: npm ci
       - run: npm run build
+      - run: echo $RELEASE
       - run: |
           rm -rf /deploy/blog-data/*
-          cp -r dist/* /deploy/blog-data/
+          mkdir -p /deploy/blog-data/$RELEASE
+          rsync -az --delete dist/ /deploy/blog-data/$RELEASE
