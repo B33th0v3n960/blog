@@ -1,11 +1,16 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import node from "@astrojs/node";
 import { defineConfig } from "astro/config";
 import { remarkAlert } from "remark-github-blockquote-alert";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
 export default defineConfig({
+  output: "static",
+  adapter: node({
+    mode: "standalone",
+  }),
   integrations: [mdx(), sitemap()],
   server: {
     port: 3000,
