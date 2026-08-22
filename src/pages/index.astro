@@ -2,9 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CopyText from "../components/TextCopy.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import Heatmap from "../components/Heatmap.astro";
 
 import { getCollection } from "astro:content";
 import { ArrowUpRight, ArrowRight, Download } from "@lucide/astro";
+
 import resume from "/Zhou-Sun_Resume.pdf";
 
 const allPosts = await getCollection("blog");
@@ -33,6 +35,15 @@ const githubUrl = "https://github.com/B33th0v3n960";
       take my skills into a real-world environment. Here's what I've been
       building.
     </p>
+  </section>
+  <section>
+    <h2>Github Contributions</h2>
+    <Heatmap server:defer>
+      <div class="skeleton-grid" slot="fallback">
+        <p>contributions in the last year</p>
+        <div class="skeleton__heatmap"></div>
+      </div>
+    </Heatmap>
   </section>
   <section class="about">
     <div class="cv">
@@ -162,6 +173,23 @@ const githubUrl = "https://github.com/B33th0v3n960";
   @media screen and (min-width: 1024px) {
     ul {
       grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  .skeleton__heatmap {
+    width: 100%;
+    height: calc(7 * 15px + var(--space-xs) * 8 + 1.7px * 2);
+    border: var(--default-border);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
     }
   }
 </style>
