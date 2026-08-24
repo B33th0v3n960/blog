@@ -41,9 +41,9 @@ jobs:
         - uses: actions/checkout@v4
 
         - name: Build with Buildah
-          uses: redhat-actions/buildah-build@v2
+          uses: redhat-actions/buildah-build@v3
           with:
-            image: your.gitea.com/username/blog
+            image: gitea.b33th0v3n.com/b33th0v3n/blog
             tags: latest
             containerfiles: ./Dockerfile
             platforms: linux/amd64,linux/arm64
@@ -51,8 +51,8 @@ jobs:
         - name: Push to Gitea registry
           uses: redhat-actions/push-to-registry@v2
           with:
-            image: your.gitea.com/username/blog
-            tags: latest
-            registry: your.gitea.com
-            username: ${{ secrets.REGISTRY_USERNAME }}
+            image: ${{ steps.build.outputs.image }}
+            tags: ${{ steps.build.outputs.tags }}
+            registry: gitea.b33th0v3n.com
+            username: b33th0v3n
             password: ${{ secrets.REGISTRY_TOKEN }}
