@@ -34,3 +34,25 @@ jobs:
           cd /deploy/blog-data/ 
           ln -sfn $RELEASE current
           ls -1t | tail -n +6 | xargs -r rm -rf
+
+  build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+
+        - name: Build with Buildah
+          uses: redhat-actions/buildah-build@v2
+          with:
+            image: your.gitea.com/username/blog
+            tags: latest
+            containerfiles: ./Dockerfile
+            platforms: linux/amd64,linux/arm64
+
+        - name: Push to Gitea registry
+          uses: redhat-actions/push-to-registry@v2
+          with:
+            image: your.gitea.com/username/blog
+            tags: latest
+            registry: your.gitea.com
+            username: ${{ secrets.REGISTRY_USERNAME }}
+            password: ${{ secrets.REGISTRY_TOKEN }}
