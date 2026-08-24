@@ -52,6 +52,7 @@ jobs:
             tags: latest
             containerfiles: ./Dockerfile
             platforms: linux/amd64,linux/arm64
+            extra-args: --isolation=chroot
 
         - name: Push to Gitea registry
           uses: redhat-actions/push-to-registry@v2
