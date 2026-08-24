@@ -3,7 +3,7 @@ import "../styles/global.css";
 import { z } from "zod";
 
 export const prerender = false;
-const githubToken = import.meta.env.GITHUB_TOKEN;
+const githubToken = process.env.GITHUB_TOKEN;
 
 const ContributionDaySchema = z.object({
   date: z.string(),
