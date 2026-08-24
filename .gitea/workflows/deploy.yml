@@ -18,7 +18,7 @@ jobs:
                echo $RELEASE
 
         - name: Build the Image
-          run: docker build -t gitea.b33th0v3n.com/${{secrets.USERNAME}}/blog:$RELEASE .
+          run: docker build -t gitea.b33th0v3n.com/${{secrets.USERNAME}}/blog:latest .
 
         - name: Push the Image
-          run: docker push gitea.b33th0v3n.com/${{secrets.USERNAME}}/blog:$RELEASE
+          run: docker push gitea.b33th0v3n.com/${{secrets.USERNAME}}/blog:latest
