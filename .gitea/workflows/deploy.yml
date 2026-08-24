@@ -1,64 +1,23 @@
 name: Deploy blog on release
 run-name: ${{ gitea.actor }} deploy blog on ${{ gitea.event_name }}
 
-on:
-  push:
-    tags:
-      - 'v*'
+on: [push]
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    container:
-      image: node:24-trixie-slim
-      options: -v blog-data:/deploy/blog-data
-    steps:
-      - name: Install system deps
-        run: |
-          apt-get update
-          apt-get install -y rsync
-
-      - name: Check out repository code
-        uses: actions/checkout@v4
-
-      - run: npm ci
-      - run: npm run build
-
-      - name: Set release name
-        run: echo "RELEASE=release-${GITHUB_REF#refs/tags/}" >> "$GITHUB_ENV"
-
-      - name: Syncing the new release
-        run: |
-          mkdir -p /deploy/blog-data/$RELEASE
-          rsync -az --delete dist/ /deploy/blog-data/$RELEASE
-          cd /deploy/blog-data/ 
-          ln -sfn $RELEASE current
-          ls -1t | tail -n +6 | xargs -r rm -rf
-
-  build:
+ build:
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/checkout@v4
+        - name: Check out repository code
+          uses: actions/checkout@v4
+        
+        - name: Login to docker
+          run: docker login gitea.b33th0v3n.com --username ${{secret.USERNAME}} --password ${{secret.REGISTRY_TOKEN}}
+        
+        - name: Set release name
+          run: echo "RELEASE=release-${GITHUB_REF#refs/tags/}" >> "$GITHUB_ENV"
 
-        - name: Install Buildah
-          run: |
-            sudo apt-get update
-            sudo apt-get install -y buildah
+        - name: Build the Image
+          run: docker build -t gitea.b33th0v3n.com/${{secret.USERNAME}}/blog:$RELEASE .
 
-        - name: Build with Buildah
-          uses: redhat-actions/buildah-build@v3
-          with:
-            image: gitea.b33th0v3n.com/b33th0v3n/blog
-            tags: latest
-            containerfiles: ./Dockerfile
-            platforms: linux/amd64,linux/arm64
-            extra-args: --isolation=chroot
-
-        - name: Push to Gitea registry
-          uses: redhat-actions/push-to-registry@v2
-          with:
-            image: ${{ steps.build.outputs.image }}
-            tags: ${{ steps.build.outputs.tags }}
-            registry: gitea.b33th0v3n.com
-            username: b33th0v3n
-            password: ${{ secrets.REGISTRY_TOKEN }}
+        - name: Push the Image
+          run: docker push gitea.b33th0v3n.com/${{secret.USERNAME}}/blog:$RELEASE
