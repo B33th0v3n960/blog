@@ -29,6 +29,6 @@ jobs:
 
         - name: Build the Image
           run: |
-            docker build -t ${{env.DOCKER_ADDRESS}}/${{secrets.USERNAME}}/${{env.ARTIFACT_NAME}}:${{steps.meta.outputs.REPO_VERSION}} .
+            docker buildx build --platform linux/amd64,linux/arm64 -t ${{env.DOCKER_ADDRESS}}/${{secrets.USERNAME}}/${{env.ARTIFACT_NAME}}:${{steps.meta.outputs.REPO_VERSION}} .
             docker tag ${{env.DOCKER_ADDRESS}}/${{secrets.USERNAME}}/${{env.ARTIFACT_NAME}}:${{steps.meta.outputs.REPO_VERSION}} ${{env.DOCKER_ADDRESS}}/${{secrets.USERNAME}}/${{env.ARTIFACT_NAME}}:latest
             docker push ${{env.DOCKER_ADDRESS}}/${{secrets.USERNAME}}/blog:${{steps.meta.outputs.REPO_VERSION}}
