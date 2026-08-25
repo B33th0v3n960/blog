@@ -1,0 +1,16 @@
+.env
+
+.astro
+.git
+.gitea
+.vscode
+.gitignore
+
+dist
+node_modules
+
+README.md
+
+compose.yml
+dockerfile
+.dockerignore

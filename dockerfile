@@ -11,4 +11,5 @@ COPY --from=builder /blog/dist ./dist
 COPY --from=builder /blog/node_modules ./node_modules
 
 EXPOSE 3000
-CMD ["node", "./dist/server/entry.mjs" ]
+ENTRYPOINT ["node", "./dist/server/entry.mjs"]
+CMD []

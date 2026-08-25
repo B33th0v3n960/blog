@@ -1,7 +1,10 @@
 services:
   blog-test:
     build: .
+    # image: gitea.b33th0v3n.com/b33th0v3n/blog:v0.1.2
+    container_name: blog-test
+    init: true
     ports:
       - "3000:3000"
-    environment:
-      - GITHUB_TOKEN:$GITHUB_TOKEN
+    env_file:
+      - .env
