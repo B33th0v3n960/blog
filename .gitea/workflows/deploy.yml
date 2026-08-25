@@ -8,7 +8,7 @@ jobs:
       runs-on: ubuntu-latest
       env:
         DOCKER_ADDRESS: gitea.b33th0v3n.com
-        DOCKER_ORG: blog
+        ARTIFACT_NAME: blog
         DOCKER_LATEST: nightly
         RUNNER_TOOL_CACHE: /toolcache
       steps:
@@ -28,7 +28,7 @@ jobs:
             echo REPO_VERSION=$(git describe --tags --always | sed 's/^v//') >> $GITHUB_OUTPUT                
 
         - name: Build the Image
-          run: docker build -t ${{env.DOCKER_ADDRESS}}/${{secrets.USERNAME}}/blog:${{steps.meta.outputs.REPO_VERSION}} .
-
-        - name: Push the Image
-          run: docker push ${{env.DOCKER_ADDRESS}}/${{secrets.USERNAME}}/blog:${{steps.meta.outputs.REPO_VERSION}}
+          run: |
+            docker build -t ${{env.DOCKER_ADDRESS}}/${{secrets.USERNAME}}/${{env.ARTIFACT_NAME}}:${{steps.meta.outputs.REPO_VERSION}} .
+            docker tag ${{env.DOCKER_ADDRESS}}/${{secrets.USERNAME}}/${{env.ARTIFACT_NAME}}:${{steps.meta.outputs.REPO_VERSION}} ${{env.DOCKER_ADDRESS}}/${{secrets.USERNAME}}/${{env.ARTIFACT_NAME}}:latest
+            docker push ${{env.DOCKER_ADDRESS}}/${{secrets.USERNAME}}/blog:${{steps.meta.outputs.REPO_VERSION}}
