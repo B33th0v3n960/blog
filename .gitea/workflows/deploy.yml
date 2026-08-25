@@ -4,23 +4,31 @@ run-name: ${{ gitea.actor }} build blog docker image on ${{ gitea.event_name }}
 on: [push]
 
 jobs:
- build-container:
+  build-container:
       runs-on: ubuntu-latest
       env:
-        DOCKER_ADDRESS: gitea.b33th0v3n.com
-        ARTIFACT_NAME: blog
-        DOCKER_LATEST: nightly
-        RUNNER_TOOL_CACHE: /toolcache
+       DOCKER_ADDRESS: gitea.b33th0v3n.com
+       ARTIFACT_NAME: blog
+       DOCKER_LATEST: nightly
+       RUNNER_TOOL_CACHE: /toolcache
+         
       steps:
+        - name: Install Dependencies
+          apt-get update & apt-get upgrade
+          apt-get install nodejs
+
         - name: Check out repository code
-          uses: actions/checkout@v4
+         uses: actions/checkout@v4
+
+        - run: npm ci
+        - run: npm run build
 
         - name: Set up QEMU
           uses: docker/setup-qemu-action@v2
-        
+       
         - name: Login to docker
           run: echo "${{ secrets.REGISTRY_TOKEN }}" | docker login ${{env.DOCKER_ADDRESS}} --username ${{secrets.USERNAME}} --password-stdin
-        
+       
         - name: Get Meta
           id: meta
           run: |
