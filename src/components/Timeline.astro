@@ -1,0 +1,71 @@
+---
+import "../styles/global.css";
+---
+
+<div class="timeline">
+  <div class="experience-container">
+    <h3>Formula Trinity</h3>
+    <small>October 2026 - Present</small>
+    <p>New member of the Formula Trinity Simulation team.</p>
+  </div>
+
+  <div class="experience-container">
+    <h3>S2S Mentor</h3>
+    <small>September 202 - Present</small>
+    <p>
+      Helped out new students providing guidance on academic expectations, study
+      habits and student life.
+    </p>
+  </div>
+</div>
+
+<style>
+  .timeline {
+    padding: var(--space-md) var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-lg);
+
+    position: relative;
+
+    &::after {
+      content: " ";
+      position: absolute;
+      width: var(--space-xs);
+      height: 100%;
+      background-color: var(--fg-primary);
+      top: 0;
+      left: var(--space-lg);
+    }
+  }
+
+  .experience-container {
+    max-width: var(--small-breakpoint);
+    border: var(--default-border);
+    padding: var(--space-xs) var(--space-md);
+    display: flex;
+    flex-direction: column;
+
+    & p {
+      margin-top: var(--space-sm);
+    }
+
+    position: relative;
+
+    &::before {
+      content: " ";
+      position: absolute;
+
+      width: var(--h2-font-size);
+      height: var(--h2-font-size);
+
+      background-color: var(--fg-primary);
+
+      top: 20%;
+      left: calc(0px - var(--space-xl) / 2 - var(--h2-font-size) / 2);
+
+      transform: rotate(45deg);
+    }
+  }
+</style>
